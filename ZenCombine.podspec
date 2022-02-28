@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ZenCombine'
-  s.version          = '0.0.1'
+  s.version          = '0.1.0'
   s.swift_version    = '5.0'
   s.summary          = 'ZenCombine is a collection of extensions and functions for Combine framework.'
   s.description      = <<-DESC
