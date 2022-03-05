@@ -15,5 +15,5 @@ Pod::Spec.new do |spec|
   spec.osx.deployment_target = '10.15'
   spec.tvos.deployment_target = '13.0'
   spec.watchos.deployment_target = '6.0'
-  spec.source_files     = 'Sources/ZenCombine/**/*{swift}'
+  spec.source_files     = 'Sources/**/*{swift}'
 end
