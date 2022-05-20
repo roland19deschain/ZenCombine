@@ -1,11 +1,23 @@
 import Foundation
 import Combine
 
-public extension AnyPublisher where Failure == Error {
+public extension AnyPublisher {
 
-	static var justVoid: AnyPublisher<Void, Error> {
+	static var justVoid: AnyPublisher<Void, Failure> {
 		Just(()).setFailureType(
-			to: Error.self
+			to: Failure.self
+		).eraseToAnyPublisher()
+	}
+	
+	static var justTrue: AnyPublisher<Bool, Failure> {
+		Just(true).setFailureType(
+			to: Failure.self
+		).eraseToAnyPublisher()
+	}
+	
+	static var justFalse: AnyPublisher<Bool, Failure> {
+		Just(false).setFailureType(
+			to: Failure.self
 		).eraseToAnyPublisher()
 	}
 	
