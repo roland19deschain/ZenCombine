@@ -22,3 +22,11 @@ public extension AnyPublisher {
 	}
 	
 }
+
+public extension AnyPublisher where Output: ExpressibleByNilLiteral {
+	
+	static var justNil: AnyPublisher<Output, Failure> {
+		Just(nil).setFailureType(to: Failure.self).eraseToAnyPublisher()
+	}
+	
+}
