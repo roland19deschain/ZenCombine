@@ -2,15 +2,18 @@ import Foundation
 import Combine
 
 public extension AnyPublisher {
-
-	static func wrap(_ result: @autoclosure @escaping () -> Output) -> Self {
+	
+	static func wrapAsync(
+		qos: DispatchQoS.QoSClass = .default,
+		_ result: @autoclosure @escaping () -> Output
+	) -> Self {
 		Deferred {
 			Future { promise in
-				DispatchQueue.global().async {
+				DispatchQueue.global(qos: qos).async {
 					promise(.success(result()))
 				}
 			}
 		}.eraseToAnyPublisher()
 	}
-
+	
 }
