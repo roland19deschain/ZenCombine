@@ -1,13 +1,12 @@
-// swift-tools-version:5.5
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.9
 
 import PackageDescription
 
 let package = Package(
 	name: "ZenCombine",
 	platforms: [
-		.iOS(.v13),
-		.tvOS(.v13),
+		.iOS(.v14),
+		.tvOS(.v14),
 		.macOS(.v10_15),
 		.watchOS(.v6)
 	],

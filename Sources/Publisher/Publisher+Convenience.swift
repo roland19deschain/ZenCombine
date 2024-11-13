@@ -15,3 +15,12 @@ public extension Publisher {
 	}
 	
 }
+
+public extension Publisher where Failure == Never {
+	
+	/// Changes the failure type to the value required in the context.
+	func promoteError<T>() -> AnyPublisher<Output, T> where T: Error {
+		setFailureType(to: T.self).eraseToAnyPublisher()
+	}
+
+}
