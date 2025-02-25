@@ -2,7 +2,7 @@ import Foundation
 import Combine
 
 public extension AnyPublisher {
-
+	
 	static var justVoid: AnyPublisher<Void, Failure> {
 		Just(()).setFailureType(
 			to: Failure.self
@@ -17,6 +17,16 @@ public extension AnyPublisher {
 	
 	static var justFalse: AnyPublisher<Bool, Failure> {
 		Just(false).setFailureType(
+			to: Failure.self
+		).eraseToAnyPublisher()
+	}
+	
+	static func fail(_ error: Failure) -> Self {
+		Fail(error: error).eraseToAnyPublisher()
+	}
+	
+	static func just(_ output: Output) -> Self {
+		Just(output).setFailureType(
 			to: Failure.self
 		).eraseToAnyPublisher()
 	}
