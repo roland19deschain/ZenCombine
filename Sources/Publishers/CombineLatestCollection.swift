@@ -27,7 +27,7 @@ Publishers.Element: Publisher
 extension CombineLatestCollection: Publisher {
 	
 	public func receive<S>(subscriber: S) where
-S: Subscriber,
+	S: Subscriber,
 	S.Failure == Failure,
 	S.Input == Output {
 		let subscription = Subscription(
@@ -44,18 +44,20 @@ extension CombineLatestCollection {
 	
 	public final class Subscription<Subscriber>: Combine.Subscription
 	where
-Subscriber: Combine.Subscriber,
+	Subscriber: Combine.Subscriber,
 	Subscriber.Failure == Failure,
 	Subscriber.Input == Output
 	{
 		private let subscribers: [AnyCancellable]
 		
 		fileprivate init(publishers: Publishers, subscriber: Subscriber) {
-			var values: [Publishers.Element.Output?] = Array(repeating: nil, count: publishers.count)
+			var values: [Publishers.Element.Output?] = Array(
+				repeating: nil,
+				count: publishers.count
+			)
 			var completions = 0
 			var hasCompleted = false
 			var lock = pthread_mutex_t()
-			
 			subscribers = publishers.enumerated().map { index, publisher in
 				publisher.sink { completion in
 					pthread_mutex_lock(&lock)

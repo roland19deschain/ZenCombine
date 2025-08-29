@@ -10,7 +10,7 @@ public extension Publisher {
 	}
 	
 	/// Maps the value to `Void`.
-	func mapToVoid() -> Publishers.Map<Self, Void> {
+	var mapToVoid: Publishers.Map<Self, Void> {
 		map { _ in () }
 	}
 	

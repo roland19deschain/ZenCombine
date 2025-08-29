@@ -5,8 +5,8 @@ import PackageDescription
 let package = Package(
 	name: "ZenCombine",
 	platforms: [
-		.iOS(.v14),
-		.tvOS(.v14),
+		.iOS(.v15),
+		.tvOS(.v15),
 		.macOS(.v10_15),
 		.watchOS(.v6)
 	],
